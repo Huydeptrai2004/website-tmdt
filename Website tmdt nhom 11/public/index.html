@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LUMIÈRE – Define your era with our new collection 2024. Premium fashion for the modern wardrobe.">
+  <title>LUMIÈRE – Define Your Era</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── Announcement Bar ──────────────────────── -->
+  <div class="announcement-bar">
+    <span>FREE SHIPPING ON ORDERS OVER $50 &nbsp;|&nbsp; USE CODE: <strong>STYLE20</strong></span>
+    <button class="announcement-bar__close" aria-label="Close announcement">✕</button>
+  </div>
+
+  <!-- ── Site Header ───────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Left Nav -->
+      <nav class="nav-primary" aria-label="Main navigation">
+        <a href="index.html#new-in">New In</a>
+        <a href="shop.html?cat=women">Women</a>
+        <a href="shop.html?cat=men">Men</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+        <a href="shop.html?sale=1" class="sale-link">Sale</a>
+      </nav>
+
+      <!-- Logo -->
+      <a href="index.html" class="site-logo" aria-label="LUMIÈRE Home">LUMIÈRE</a>
+
+      <!-- Right Actions -->
+      <div class="nav-actions">
+        <button class="nav-icon-btn" data-search-open aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <a href="#" class="nav-icon-btn" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </a>
+        <a href="#" class="nav-icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <button class="nav-icon-btn" data-cart-open aria-label="Shopping cart">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" aria-live="polite">0</span>
+        </button>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Mobile Nav ─────────────────────────────── -->
+  <div class="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="mobile-nav__overlay"></div>
+    <div class="mobile-nav__panel">
+      <div class="mobile-nav__header">
+        <span class="site-logo" style="font-size:1.3rem">LUMIÈRE</span>
+      </div>
+      <nav class="mobile-nav__links">
+        <a href="index.html#new-in">New In</a>
+        <a href="shop.html?cat=women">Women</a>
+        <a href="shop.html?cat=men">Men</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+        <a href="shop.html?sale=1" style="color:var(--accent)">Sale</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ── Search Modal ───────────────────────────── -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-modal__overlay"></div>
+    <div class="search-modal__inner">
+      <button class="search-modal__close" data-search-close>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Close
+      </button>
+      <form class="search-modal__form" action="shop.html" method="get">
+        <input class="search-modal__input" name="q" type="text" placeholder="Search…" autocomplete="off">
+        <button class="search-modal__btn" type="submit" aria-label="Submit search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Cart Drawer ────────────────────────────── -->
+  <div class="cart-drawer__overlay"></div>
+  <aside class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">My Bag</h2>
+      <button class="cart-drawer__close" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-drawer__body"></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <strong class="cart-drawer__subtotal-value">$0.00</strong>
+      </div>
+      <p style="font-size:0.75rem;color:var(--gray-500);text-align:center">Shipping &amp; taxes calculated at checkout</p>
+      <a href="cart.html" class="btn btn-primary btn-full">View Cart &amp; Checkout</a>
+      <a href="shop.html" style="text-align:center;font-size:0.8rem;color:var(--gray-500);text-decoration:underline;margin:0 auto;">Continue Shopping</a>
+    </div>
+  </aside>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- HERO SECTION                                -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="hero" aria-label="Hero banner">
+    <div class="hero__bg" role="img" aria-label="Fashion editorial background"></div>
+    <div class="hero__content">
+      <span class="hero__label">New Collection 2024</span>
+      <h1 class="hero__title">Define<br><em>Your Era</em></h1>
+      <p class="hero__subtitle">Curated pieces for the modern wardrobe. Timeless silhouettes, contemporary craft.</p>
+      <div class="hero__actions">
+        <a href="shop.html" class="btn btn-primary btn-lg">Shop Now</a>
+        <a href="shop.html?sale=1" class="btn btn-outline btn-lg">Explore Collection</a>
+      </div>
+    </div>
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- CATEGORY CIRCLES                            -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="category-section" id="new-in">
+    <div class="container">
+      <div class="section-header text-center" style="margin-bottom:3rem">
+        <p class="section-label">Shop by Category</p>
+        <h2 class="section-title">Explore the Edit</h2>
+      </div>
+      <div class="category-grid">
+        <a href="shop.html?cat=dresses" class="category-card" aria-label="Shop Dresses">
+          <div class="category-card__circle">
+            <img src="https://picsum.photos/seed/fashion-dress/400/400" alt="Dresses" loading="lazy">
+          </div>
+          <span class="category-card__name">Dresses</span>
+          <span class="category-card__count">84 styles</span>
+        </a>
+        <a href="shop.html?cat=denim" class="category-card" aria-label="Shop Denim">
+          <div class="category-card__circle">
+            <img src="https://picsum.photos/seed/fashion-denim/400/400" alt="Denim" loading="lazy">
+          </div>
+          <span class="category-card__name">Denim</span>
+          <span class="category-card__count">56 styles</span>
+        </a>
+        <a href="shop.html?cat=outerwear" class="category-card" aria-label="Shop Outerwear">
+          <div class="category-card__circle">
+            <img src="https://picsum.photos/seed/fashion-coat/400/400" alt="Outerwear" loading="lazy">
+          </div>
+          <span class="category-card__name">Outerwear</span>
+          <span class="category-card__count">42 styles</span>
+        </a>
+        <a href="shop.html?cat=footwear" class="category-card" aria-label="Shop Footwear">
+          <div class="category-card__circle">
+            <img src="https://picsum.photos/seed/fashion-shoe/400/400" alt="Footwear" loading="lazy">
+          </div>
+          <span class="category-card__name">Footwear</span>
+          <span class="category-card__count">63 styles</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- TRENDING NOW – Product Grid                  -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="products-section" aria-labelledby="trending-title">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header-left">
+          <p class="section-label">Editor's Picks</p>
+          <h2 class="section-title" id="trending-title">Trending Now</h2>
+        </div>
+        <a href="shop.html" class="view-all-link">View All</a>
+      </div>
+      <div class="product-grid">
+        <!-- Card 1 -->
+        <article class="product-card" data-product-id="p001">
+          <div class="product-card__media">
+            <a href="product.html">
+              <img src="https://picsum.photos/seed/fashion1/400/500" alt="Asymmetric Linen Dress" loading="lazy">
+            </a>
+            <span class="product-card__badge product-card__badge--new">New</span>
+            <button class="product-card__wishlist" data-pid="p001" aria-label="Add to wishlist">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view"
+              data-add-to-cart="p001"
+              data-name="Asymmetric Linen Dress"
+              data-price="189.00"
+              data-image="https://picsum.photos/seed/fashion1/400/500"
+              aria-label="Quick view Asymmetric Linen Dress">
+              + Quick Add
+            </button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Asymmetric Linen Dress</a>
+            <div class="product-card__price"><span>$189.00</span></div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#F5F0E8" title="Sand"></span>
+              <span class="swatch" style="background:#111111" title="Black"></span>
+              <span class="swatch" style="background:#C97C5D" title="Terracotta"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="product-card" data-product-id="p002">
+          <div class="product-card__media">
+            <a href="product.html">
+              <img src="https://picsum.photos/seed/fashion2/400/500" alt="Wide-Leg Trousers" loading="lazy">
+            </a>
+            <span class="product-card__badge product-card__badge--sale">Sale</span>
+            <button class="product-card__wishlist" data-pid="p002" aria-label="Add to wishlist">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view"
+              data-add-to-cart="p002"
+              data-name="Wide-Leg Trousers"
+              data-price="95.00"
+              data-image="https://picsum.photos/seed/fashion2/400/500"
+              aria-label="Quick view Wide-Leg Trousers">
+              + Quick Add
+            </button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Wide-Leg Trousers</a>
+            <div class="product-card__price">
+              <span class="product-card__price--sale">$95.00</span>
+              <span class="product-card__price--original">$149.00</span>
+            </div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#4A4A4A" title="Charcoal"></span>
+              <span class="swatch" style="background:#E8E0D5" title="Oat"></span>
+              <span class="swatch" style="background:#2C3E50" title="Navy"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="product-card" data-product-id="p003">
+          <div class="product-card__media">
+            <a href="product.html">
+              <img src="https://picsum.photos/seed/fashion3/400/500" alt="Oversized Cashmere Blazer" loading="lazy">
+            </a>
+            <span class="product-card__badge product-card__badge--new">New</span>
+            <button class="product-card__wishlist" data-pid="p003" aria-label="Add to wishlist">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view"
+              data-add-to-cart="p003"
+              data-name="Oversized Cashmere Blazer"
+              data-price="345.00"
+              data-image="https://picsum.photos/seed/fashion3/400/500"
+              aria-label="Quick view Oversized Cashmere Blazer">
+              + Quick Add
+            </button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Oversized Cashmere Blazer</a>
+            <div class="product-card__price"><span>$345.00</span></div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#C8B89A" title="Camel"></span>
+              <span class="swatch" style="background:#111111" title="Black"></span>
+              <span class="swatch" style="background:#8B7D6B" title="Taupe"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="product-card" data-product-id="p004">
+          <div class="product-card__media">
+            <a href="product.html">
+              <img src="https://picsum.photos/seed/fashion4/400/500" alt="Silk Slip Midi Skirt" loading="lazy">
+            </a>
+            <button class="product-card__wishlist" data-pid="p004" aria-label="Add to wishlist">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view"
+              data-add-to-cart="p004"
+              data-name="Silk Slip Midi Skirt"
+              data-price="225.00"
+              data-image="https://picsum.photos/seed/fashion4/400/500"
+              aria-label="Quick view Silk Slip Midi Skirt">
+              + Quick Add
+            </button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Silk Slip Midi Skirt</a>
+            <div class="product-card__price"><span>$225.00</span></div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#E8C8B8" title="Blush"></span>
+              <span class="swatch" style="background:#6B4423" title="Mahogany"></span>
+              <span class="swatch" style="background:#1A1A2E" title="Midnight"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- SHOP THE LOOK                               -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="shop-look-section" aria-label="Shop the Look">
+    <div class="shop-look-inner">
+      <div class="shop-look__image-wrap">
+        <img src="https://picsum.photos/seed/fashionlook/700/800" alt="Shop the Look editorial" loading="lazy">
+        <!-- Hotspots -->
+        <button class="hotspot" style="top:28%;left:35%" aria-label="View product: Silk Blouse">
+          <span class="hotspot__icon">+</span>
+        </button>
+        <button class="hotspot" style="top:58%;left:52%" aria-label="View product: Tailored Trousers">
+          <span class="hotspot__icon">+</span>
+        </button>
+        <button class="hotspot" style="top:82%;left:40%" aria-label="View product: Leather Mules">
+          <span class="hotspot__icon">+</span>
+        </button>
+      </div>
+      <div class="shop-look__content">
+        <p class="section-label" style="color:var(--accent)">The Edit</p>
+        <h2 class="section-title" style="font-size:2.5rem">Shop the Look</h2>
+        <p style="color:var(--gray-600);font-size:0.9rem;margin-top:0.75rem;line-height:1.7">
+          Complete the look with our curated head-to-toe selection. Each piece chosen for its refined simplicity.
+        </p>
+        <div class="shop-look__products">
+          <a href="product.html" class="look-product-item">
+            <img src="https://picsum.photos/seed/fashion5/400/500" alt="Sheer Silk Blouse" class="look-product-item__img">
+            <div class="look-product-item__details">
+              <div class="look-product-item__name">Sheer Silk Blouse</div>
+              <div class="look-product-item__price">$165.00</div>
+            </div>
+            <span class="btn btn-sm btn-outline-dark">Add</span>
+          </a>
+          <a href="product.html" class="look-product-item">
+            <img src="https://picsum.photos/seed/fashion6/400/500" alt="Tailored Cigarette Trousers" class="look-product-item__img">
+            <div class="look-product-item__details">
+              <div class="look-product-item__name">Tailored Cigarette Trousers</div>
+              <div class="look-product-item__price">$210.00</div>
+            </div>
+            <span class="btn btn-sm btn-outline-dark">Add</span>
+          </a>
+          <a href="product.html" class="look-product-item">
+            <img src="https://picsum.photos/seed/fashion7/400/500" alt="Pointed Leather Mules" class="look-product-item__img">
+            <div class="look-product-item__details">
+              <div class="look-product-item__name">Pointed Leather Mules</div>
+              <div class="look-product-item__price">$285.00</div>
+            </div>
+            <span class="btn btn-sm btn-outline-dark">Add</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- INSTAGRAM GRID                              -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="instagram-section" aria-labelledby="instagram-title">
+    <div class="container">
+      <div class="section-header text-center">
+        <p class="section-label">Community</p>
+        <h2 class="section-title" id="instagram-title">#LUMIERESTYLE</h2>
+        <p class="section-subtitle" style="margin-top:0.75rem">Tag us to be featured. Real people, real style.</p>
+      </div>
+    </div>
+    <div class="instagram-grid" style="margin-top:2.5rem">
+      <div class="instagram-item">
+        <img src="https://picsum.photos/seed/insta1/400/400" alt="Instagram post 1" loading="lazy">
+        <div class="instagram-item__overlay">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path fill="white" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://picsum.photos/seed/insta2/400/400" alt="Instagram post 2" loading="lazy">
+        <div class="instagram-item__overlay">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path fill="white" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://picsum.photos/seed/insta3/400/400" alt="Instagram post 3" loading="lazy">
+        <div class="instagram-item__overlay">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path fill="white" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://picsum.photos/seed/insta4/400/400" alt="Instagram post 4" loading="lazy">
+        <div class="instagram-item__overlay">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path fill="white" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://picsum.photos/seed/insta5/400/400" alt="Instagram post 5" loading="lazy">
+        <div class="instagram-item__overlay">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path fill="white" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://picsum.photos/seed/insta6/400/400" alt="Instagram post 6" loading="lazy">
+        <div class="instagram-item__overlay">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path fill="white" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- NEWSLETTER                                  -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="newsletter-section" aria-labelledby="newsletter-title">
+    <div class="container">
+      <p class="section-label">Stay in the Know</p>
+      <h2 class="section-title" id="newsletter-title">Join the Inner Circle</h2>
+      <p class="section-subtitle" style="margin-top:1rem;margin-bottom:2.5rem">
+        Be the first to discover new arrivals, exclusive offers, and style inspiration delivered straight to your inbox.
+      </p>
+      <form class="newsletter-form" novalidate>
+        <input class="newsletter-form__input" type="email" placeholder="Your email address" required aria-label="Email address">
+        <button class="newsletter-form__btn" type="submit">Subscribe</button>
+      </form>
+      <div class="newsletter-success" role="status">
+        <span>✓</span>&nbsp; You're on the list. Welcome to the family, darling.
+      </div>
+      <p style="color:rgba(255,255,255,0.3);font-size:0.72rem;margin-top:1.25rem">
+        No spam, ever. You can unsubscribe at any time. View our <a href="#" style="color:rgba(255,255,255,0.5);text-decoration:underline">Privacy Policy</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- FOOTER                                      -->
+  <!-- ════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-brand__logo">LUMIÈRE</div>
+          <p class="footer-brand__desc">
+            Premium fashion for those who define their own era. Crafted with intention, worn with purpose.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social__link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer-social__link" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 20l4-9"/><path d="M10.7 14c.437 1.263 1.43 2 2.55 2 2.071 0 3.75-1.679 3.75-3.75 0-3.314-2.686-6-6-6-3.314 0-6 2.686-6 6 0 2.071 1.058 3.888 2.656 4.953"/></svg>
+            </a>
+            <a href="#" class="footer-social__link" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5"/></svg>
+            </a>
+            <a href="#" class="footer-social__link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Shop -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Shop</h3>
+          <ul class="footer-col__links">
+            <li><a href="shop.html?new=1">New Arrivals</a></li>
+            <li><a href="shop.html?cat=women">Women</a></li>
+            <li><a href="shop.html?cat=men">Men</a></li>
+            <li><a href="shop.html?cat=accessories">Accessories</a></li>
+            <li><a href="shop.html?cat=sale" style="color:var(--accent)">Sale</a></li>
+          </ul>
+        </div>
+
+        <!-- Help -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">Help</h3>
+          <ul class="footer-col__links">
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Store Locator</a></li>
+          </ul>
+        </div>
+
+        <!-- Social/Info -->
+        <div class="footer-col">
+          <h3 class="footer-col__title">About</h3>
+          <ul class="footer-col__links">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Affiliates</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">© 2024 LUMIÈRE. All rights reserved.</p>
+        <div class="footer-payments" aria-label="Accepted payment methods">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">AMEX</span>
+          <span class="payment-icon">PayPal</span>
+          <span class="payment-icon">Apple Pay</span>
+        </div>
+        <div class="footer-bottom__links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
