@@ -1,0 +1,25 @@
+{
+  "name": "lumiere-fashion-admin-api",
+  "version": "1.0.0",
+  "description": "LUMIÈRE Fashion Store - Express Backend & Admin Management API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "keywords": [
+    "ecommerce",
+    "admin-dashboard",
+    "express",
+    "api"
+  ],
+  "author": "LUMIÈRE",
+  "license": "ISC"
+}
+

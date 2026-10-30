@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your shopping cart – LUMIÈRE. Review your items and proceed to checkout.">
+  <title>My Cart – LUMIÈRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <span>MIỄN PHÍ VẬN CHUYỂN CHO ĐƠN HÀNG TRÊN 1.250.000₫ &nbsp;|&nbsp; MÃ GIẢM GIÁ: <strong>STYLE20</strong></span>
+    <button class="announcement-bar__close" aria-label="Close announcement">✕</button>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <nav class="nav-primary" aria-label="Main navigation">
+        <a href="index.html#new-in">New In</a>
+        <a href="shop.html?cat=women">Women</a>
+        <a href="shop.html?cat=men">Men</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+        <a href="shop.html?sale=1" class="sale-link">Sale</a>
+      </nav>
+      <a href="index.html" class="site-logo">LUMIÈRE</a>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" data-search-open aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <a href="#" class="nav-icon-btn" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </a>
+        <a href="login.html" class="nav-icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <button class="nav-icon-btn" data-cart-open aria-label="Shopping cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
+    <div class="mobile-nav__overlay"></div>
+    <div class="mobile-nav__panel">
+      <div class="mobile-nav__header">
+        <span class="site-logo" style="font-size:1.3rem">LUMIÈRE</span>
+      </div>
+      <nav class="mobile-nav__links">
+        <a href="index.html#new-in">New In</a>
+        <a href="shop.html?cat=women">Women</a>
+        <a href="shop.html?cat=men">Men</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+        <a href="shop.html?sale=1" style="color:var(--accent)">Sale</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal">
+    <div class="search-modal__overlay"></div>
+    <div class="search-modal__inner">
+      <button class="search-modal__close">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Close
+      </button>
+      <form class="search-modal__form">
+        <input class="search-modal__input" type="text" placeholder="Search styles, brands…" autocomplete="off">
+        <button class="search-modal__btn" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Cart Drawer (mini) -->
+  <div class="cart-drawer__overlay"></div>
+  <aside class="cart-drawer">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">My Bag</h2>
+      <button class="cart-drawer__close">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-drawer__body"></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <strong class="cart-drawer__subtotal-value">0₫</strong>
+      </div>
+      <a href="cart.html" class="btn btn-primary btn-full">View Cart &amp; Checkout</a>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════
+       CART PAGE CONTENT
+  ═══════════════════════════════════════════════ -->
+  <div class="container">
+    <div class="cart-page">
+
+      <!-- Cart Header -->
+      <div class="cart-page__header">
+        <h1 class="cart-page__title">Your Bag</h1>
+        <p class="cart-page__count" aria-live="polite">3 items</p>
+        <a href="shop.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:var(--gray-500);text-decoration:underline;margin-top:0.5rem">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Continue Shopping
+        </a>
+      </div>
+
+      <!-- Progress / Trust Bar -->
+      <div style="background:var(--off-white);border:1px solid var(--gray-200);padding:1rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--gray-600)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--success)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <span id="shippingProgress">🎉 Đơn hàng của bạn đã đủ điều kiện nhận <strong>miễn phí vận chuyển!</strong></span>
+      </div>
+
+      <div class="cart-layout">
+
+        <!-- ── Left: Cart Items ── -->
+        <div>
+          <div id="cartItemsContainer" aria-live="polite">
+            <!-- Rendered by JS, but pre-seeded with demo items for non-JS fallback look -->
+            <div class="cart-items__header">
+              <span>Product</span>
+              <span style="text-align:center">Price</span>
+              <span style="text-align:center">Quantity</span>
+              <span style="text-align:right">Total</span>
+            </div>
+
+            <!-- Demo Item 1 (shown if JS hasn't loaded yet / as placeholder) -->
+            <div class="cart-item" id="demoItems">
+              <div class="cart-item__product">
+                <img src="https://picsum.photos/seed/fashion1/400/500" alt="Asymmetric Linen Dress" class="cart-item__img">
+                <div class="cart-item__details">
+                  <a href="product.html" class="cart-item__name">Asymmetric Linen Dress</a>
+                  <div class="cart-item__meta">
+                    <span>Size: M</span>
+                    <span>Color: Sand</span>
+                    <span>SKU: LMR-DRS-001</span>
+                  </div>
+                  <button class="cart-item__remove" onclick="removeDemoItem('demo1')">Remove</button>
+                </div>
+              </div>
+              <div class="cart-item__price">4.725.000₫</div>
+              <div class="qty-control" aria-label="Quantity">
+                <button class="qty-control__btn" aria-label="Decrease">−</button>
+                <span class="qty-control__value">1</span>
+                <button class="qty-control__btn" aria-label="Increase">+</button>
+              </div>
+              <div class="cart-item__total">4.725.000₫</div>
+            </div>
+
+            <div class="cart-item">
+              <div class="cart-item__product">
+                <img src="https://picsum.photos/seed/fashion3/400/500" alt="Oversized Cashmere Blazer" class="cart-item__img">
+                <div class="cart-item__details">
+                  <a href="product.html" class="cart-item__name">Oversized Cashmere Blazer</a>
+                  <div class="cart-item__meta">
+                    <span>Size: S</span>
+                    <span>Color: Camel</span>
+                    <span>SKU: LMR-JKT-003</span>
+                  </div>
+                  <button class="cart-item__remove" onclick="removeDemoItem('demo2')">Remove</button>
+                </div>
+              </div>
+              <div class="cart-item__price">8.625.000₫</div>
+              <div class="qty-control" aria-label="Quantity">
+                <button class="qty-control__btn" aria-label="Decrease">−</button>
+                <span class="qty-control__value">1</span>
+                <button class="qty-control__btn" aria-label="Increase">+</button>
+              </div>
+              <div class="cart-item__total">8.625.000₫</div>
+            </div>
+
+            <div class="cart-item">
+              <div class="cart-item__product">
+                <img src="https://picsum.photos/seed/fashion4/400/500" alt="Silk Slip Midi Skirt" class="cart-item__img">
+                <div class="cart-item__details">
+                  <a href="product.html" class="cart-item__name">Silk Slip Midi Skirt</a>
+                  <div class="cart-item__meta">
+                    <span>Size: M</span>
+                    <span>Color: Blush</span>
+                    <span>SKU: LMR-SKT-004</span>
+                  </div>
+                  <button class="cart-item__remove" onclick="removeDemoItem('demo3')">Remove</button>
+                </div>
+              </div>
+              <div class="cart-item__price">5.625.000₫</div>
+              <div class="qty-control" aria-label="Quantity">
+                <button class="qty-control__btn" aria-label="Decrease">−</button>
+                <span class="qty-control__value">2</span>
+                <button class="qty-control__btn" aria-label="Increase">+</button>
+              </div>
+              <div class="cart-item__total">11.250.000₫</div>
+            </div>
+          </div><!-- /cartItemsContainer -->
+
+          <!-- Gift Note -->
+          <div style="margin-top:2rem;padding:1.5rem;border:1px solid var(--gray-200)">
+            <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;margin-bottom:1rem">
+              <input type="checkbox" id="giftNoteToggle" style="accent-color:var(--black)">
+              <span style="font-size:0.85rem;font-weight:500">Add a gift note</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h6"/><path d="M18 2l4 4-10 10H8v-4L18 2z"/></svg>
+            </label>
+            <textarea id="giftNote" rows="3" placeholder="Write your gift message here…" style="display:none;width:100%;padding:0.75rem;border:1px solid var(--gray-300);font-family:var(--font-body);font-size:0.85rem;resize:vertical;outline:none;transition:border-color 0.2s"></textarea>
+          </div>
+        </div>
+
+        <!-- ── Right: Order Summary ── -->
+        <aside aria-label="Order summary">
+          <div class="order-summary">
+            <h2 class="order-summary__title">Order Summary</h2>
+
+            <div class="order-summary__row">
+              <span>Tạm tính (3 sản phẩm)</span>
+              <span id="summarySubtotal">24.600.000₫</span>
+            </div>
+            <div class="order-summary__row">
+              <span>Phí vận chuyển</span>
+              <span id="summaryShipping">Miễn phí</span>
+            </div>
+            <div class="order-summary__row" id="discountRow" style="display:none;color:var(--accent)">
+              <span>Giảm giá</span>
+              <span id="summaryDiscount">–0₫</span>
+            </div>
+
+            <!-- Promo Code -->
+            <form class="promo-form" aria-label="Promo code">
+              <input class="promo-form__input" type="text" placeholder="Mã giảm giá hoặc thẻ quà tặng" aria-label="Enter promo code">
+              <button class="promo-form__btn" type="submit">Áp dụng</button>
+            </form>
+
+            <div class="order-summary__row total" aria-label="Total amount">
+              <span>Tổng cộng</span>
+              <strong id="summaryTotal">24.600.000₫</strong>
+            </div>
+
+            <p style="font-size:0.72rem;color:var(--gray-400);text-align:center;margin-top:-0.5rem">Đã bao gồm thuế GTGT</p>
+
+            <a href="#" class="btn btn-primary btn-full btn-lg" onclick="handleCheckout(event)" style="margin-top:1rem">
+              Tiến hành thanh toán
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <!-- OR divider -->
+            <div style="display:flex;align-items:center;gap:1rem;margin:1rem 0">
+              <hr style="flex:1;border:none;border-top:1px solid var(--gray-200)">
+              <span style="font-size:0.72rem;color:var(--gray-400);letter-spacing:0.1em;text-transform:uppercase">hoặc</span>
+              <hr style="flex:1;border:none;border-top:1px solid var(--gray-200)">
+            </div>
+
+            <!-- Express Checkout -->
+            <div style="display:flex;flex-direction:column;gap:0.75rem">
+              <button style="width:100%;padding:0.875rem;background:#000;color:#fff;border:none;cursor:pointer;font-size:0.9rem;font-weight:500;display:flex;align-items:center;justify-content:center;gap:0.5rem;border-radius:4px" onclick="showToast && showToast('Apple Pay không khả dụng ở bản demo', 'warning')">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Thanh toán qua Apple Pay
+              </button>
+              <button style="width:100%;padding:0.875rem;background:#003087;color:#fff;border:none;cursor:pointer;font-size:0.9rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:0.5rem;border-radius:4px" onclick="showToast && showToast('PayPal không khả dụng ở bản demo', 'warning')">
+                <span style="font-family:Arial,sans-serif;letter-spacing:-0.5px">Pay<span style="color:#009cde">Pal</span></span>
+              </button>
+            </div>
+
+            <!-- Checkout Perks -->
+            <div class="checkout-perks">
+              <div class="checkout-perk">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Miễn phí vận chuyển cho đơn hàng trên 1.250.000₫</span>
+              </div>
+              <div class="checkout-perk">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Đổi trả miễn phí trong 30 ngày</span>
+              </div>
+              <div class="checkout-perk">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Bảo mật SSL chuẩn quốc tế</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div style="display:flex;justify-content:center;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap">
+            <span class="payment-icon" style="font-size:11px">VISA</span>
+            <span class="payment-icon" style="font-size:11px">MC</span>
+            <span class="payment-icon" style="font-size:11px">AMEX</span>
+            <span class="payment-icon" style="font-size:11px">PayPal</span>
+            <span class="payment-icon" style="font-size:11px">Apple Pay</span>
+            <span class="payment-icon" style="font-size:11px">Klarna</span>
+          </div>
+        </aside>
+      </div><!-- /cart-layout -->
+
+    </div><!-- /cart-page -->
+  </div>
+
+  <!-- ═════════════════════════════════════════════
+       YOU MAY ALSO LIKE
+  ═════════════════════════════════════════════ -->
+  <section class="products-section" style="background:var(--off-white);padding-top:4rem;padding-bottom:4rem" aria-labelledby="also-like-title">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:2.5rem">
+        <div class="section-header-left">
+          <p class="section-label">Keep Browsing</p>
+          <h2 class="section-title" id="also-like-title">You Might Also Love</h2>
+        </div>
+        <a href="shop.html" class="view-all-link">View All</a>
+      </div>
+      <div class="product-grid">
+        <article class="product-card" data-product-id="c001">
+          <div class="product-card__media">
+            <a href="product.html"><img src="https://picsum.photos/seed/cart-rec1/400/500" alt="Draped Jersey Top" loading="lazy"></a>
+            <span class="product-card__badge product-card__badge--new">New</span>
+            <button class="product-card__wishlist" data-pid="c001" aria-label="Wishlist">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view" data-add-to-cart="c001" data-name="Draped Jersey Top" data-price="2375000" data-image="https://picsum.photos/seed/cart-rec1/400/500">+ Quick Add</button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Draped Jersey Top</a>
+            <div class="product-card__price"><span>2.375.000₫</span></div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#111111"></span>
+              <span class="swatch" style="background:#F5F0E8"></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-product-id="c002">
+          <div class="product-card__media">
+            <a href="product.html"><img src="https://picsum.photos/seed/cart-rec2/400/500" alt="Belted Wool Coat" loading="lazy"></a>
+            <button class="product-card__wishlist" data-pid="c002" aria-label="Wishlist">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view" data-add-to-cart="c002" data-name="Belted Wool Coat" data-price="11625000" data-image="https://picsum.photos/seed/cart-rec2/400/500">+ Quick Add</button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Belted Wool Coat</a>
+            <div class="product-card__price"><span>11.625.000₫</span></div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#C8B89A"></span>
+              <span class="swatch" style="background:#111111"></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-product-id="c003">
+          <div class="product-card__media">
+            <a href="product.html"><img src="https://picsum.photos/seed/cart-rec3/400/500" alt="Column Slip Dress" loading="lazy"></a>
+            <span class="product-card__badge product-card__badge--sale">Sale</span>
+            <button class="product-card__wishlist" data-pid="c003" aria-label="Wishlist">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view" data-add-to-cart="c003" data-name="Column Slip Dress" data-price="3875000" data-image="https://picsum.photos/seed/cart-rec3/400/500">+ Quick Add</button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Column Slip Dress</a>
+            <div class="product-card__price">
+              <span class="product-card__price--sale">3.875.000₫</span>
+              <span class="product-card__price--original">4.875.000₫</span>
+            </div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#E8C8B8"></span>
+              <span class="swatch" style="background:#1A1A2E"></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" data-product-id="c004">
+          <div class="product-card__media">
+            <a href="product.html"><img src="https://picsum.photos/seed/cart-rec4/400/500" alt="Contrast Stitch Trousers" loading="lazy"></a>
+            <button class="product-card__wishlist" data-pid="c004" aria-label="Wishlist">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </button>
+            <button class="product-card__quick-view" data-add-to-cart="c004" data-name="Contrast Stitch Trousers" data-price="4625000" data-image="https://picsum.photos/seed/cart-rec4/400/500">+ Quick Add</button>
+          </div>
+          <div class="product-card__info">
+            <a href="product.html" class="product-card__name">Contrast Stitch Trousers</a>
+            <div class="product-card__price"><span>4.625.000₫</span></div>
+            <div class="product-card__swatches">
+              <span class="swatch active" style="background:#F5F0E8"></span>
+              <span class="swatch" style="background:#111111"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand__logo">LUMIÈRE</div>
+          <p class="footer-brand__desc">Premium fashion for those who define their own era.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social__link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="footer-social__link" aria-label="Pinterest">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 20l4-9"/><path d="M10.7 14c.437 1.263 1.43 2 2.55 2 2.071 0 3.75-1.679 3.75-3.75 0-3.314-2.686-6-6-6-3.314 0-6 2.686-6 6 0 2.071 1.058 3.888 2.656 4.953"/></svg>
+            </a>
+            <a href="#" class="footer-social__link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Shop</h3>
+          <ul class="footer-col__links">
+            <li><a href="shop.html?new=1">New Arrivals</a></li>
+            <li><a href="shop.html?cat=women">Women</a></li>
+            <li><a href="shop.html?cat=men">Men</a></li>
+            <li><a href="shop.html?sale=1" style="color:var(--accent)">Sale</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">Help</h3>
+          <ul class="footer-col__links">
+            <li><a href="#">Shipping &amp; Returns</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 class="footer-col__title">About</h3>
+          <ul class="footer-col__links">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-bottom__copy">© 2024 LUMIÈRE. All rights reserved.</p>
+        <div class="footer-payments">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">AMEX</span>
+          <span class="payment-icon">PayPal</span>
+        </div>
+        <div class="footer-bottom__links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container"></div>
+  <script src="js/main.js"></script>
+  <script>
+    // Gift note toggle
+    const giftToggle = document.getElementById('giftNoteToggle');
+    const giftNote   = document.getElementById('giftNote');
+    if (giftToggle && giftNote) {
+      giftToggle.addEventListener('change', () => {
+        giftNote.style.display = giftToggle.checked ? 'block' : 'none';
+        if (giftToggle.checked) giftNote.focus();
+      });
+    }
+
+    // Checkout handler (demo)
+    function handleCheckout(e) {
+      e.preventDefault();
+      if (typeof showToast === 'function') {
+        showToast('Redirecting to secure checkout…', 'success');
+      }
+    }
+
+    // Remove demo items
+    function removeDemoItem(id) {
+      const row = event.target.closest('.cart-item');
+      if (row) {
+        row.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(-10px)';
+        setTimeout(() => row.remove(), 300);
+        if (typeof showToast === 'function') showToast('Item removed', 'default');
+      }
+    }
+
+    // Update shipping progress bar
+    function updateShippingProgress() {
+      const subtotalEl = document.getElementById('summarySubtotal');
+      if (!subtotalEl) return;
+      const subtotal = parseFloat(subtotalEl.textContent.replace(/[^0-9]/g,'')) || 0;
+      const progress = document.getElementById('shippingProgress');
+      const freeShipThreshold = 1250000;
+      if (progress) {
+        if (subtotal >= freeShipThreshold) {
+          progress.innerHTML = '🎉 Bạn đủ điều kiện nhận <strong>miễn phí vận chuyển!</strong>';
+          progress.parentElement.style.background = '#f0fdf4';
+          progress.parentElement.style.borderColor = '#bbf7d0';
+        } else {
+          const diff = Number(freeShipThreshold - subtotal).toLocaleString('vi-VN') + '₫';
+          progress.innerHTML = `Thêm <strong>${diff}</strong> để được miễn phí vận chuyển!`;
+        }
+      }
+    }
+    updateShippingProgress();
+
+    // Qty controls on demo items update totals
+    document.querySelectorAll('.qty-control').forEach(ctrl => {
+      ctrl.querySelectorAll('.qty-control__btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const display = ctrl.querySelector('.qty-control__value');
+          const row = ctrl.closest('.cart-item');
+          const priceEl = row ? row.querySelector('.cart-item__price') : null;
+          const totalEl = row ? row.querySelector('.cart-item__total') : null;
+          if (!display || !priceEl || !totalEl) return;
+          let qty = parseInt(display.textContent);
+          const price = parseFloat(priceEl.textContent.replace(/[^0-9]/g,'')) || 0;
+          if (btn.textContent.trim() === '+') qty++;
+          else qty = Math.max(1, qty - 1);
+          display.textContent = qty;
+          totalEl.textContent = Number(price * qty).toLocaleString('vi-VN') + '₫';
+          updateShippingProgress();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Đăng nhập hoặc tạo tài khoản LUMIÈRE – Thời trang cao cấp cho phong cách hiện đại.">
+  <title>Đăng Nhập / Đăng Ký – LUMIÈRE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Login Page Specific Styles ── */
+    .login-page-bg {
+      min-height: 100vh;
+      background: #F9F8F6;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(201,124,93,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(17,17,17,0.04) 0%, transparent 50%),
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(201,124,93,0.025) 40px,
+          rgba(201,124,93,0.025) 41px
+        );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1rem 3rem;
+    }
+
+    .auth-card {
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 4px 40px rgba(17,17,17,0.10), 0 1px 8px rgba(17,17,17,0.06);
+      width: 100%;
+      max-width: 480px;
+      overflow: hidden;
+    }
+
+    /* Tabs */
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid #E5E5E5;
+    }
+
+    .auth-tab {
+      padding: 1.1rem 1rem;
+      text-align: center;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .auth-tab.active {
+      color: #111111;
+      border-bottom-color: #111111;
+    }
+
+    .auth-tab:hover:not(.active) {
+      color: #555;
+    }
+
+    /* Tab Panels */
+    .auth-panels {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-panel {
+      display: none;
+      padding: 2.5rem 2.5rem 2rem;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .auth-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .auth-panel__title {
+      font-family: var(--font-heading, 'Playfair Display', serif);
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: #111111;
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .auth-panel__subtitle {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Form Fields */
+    .auth-field {
+      margin-bottom: 1.15rem;
+    }
+
+    .auth-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #444;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.45rem;
+    }
+
+    .auth-input-wrap {
+      position: relative;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #DDDAD6;
+      border-radius: 2px;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 0.9rem;
+      color: #111111;
+      background: #FAFAFA;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      box-sizing: border-box;
+    }
+
+    .auth-input:focus {
+      border-color: #111111;
+      background: #ffffff;
+    }
+
+    .auth-input::placeholder {
+      color: #BBB;
+    }
+
+    /* Password toggle */
+    .auth-input--padded { padding-right: 3rem; }
+
+    .pw-toggle {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      color: #999;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+
+    .pw-toggle:hover { color: #111; }
+
+    /* Remember + Forgot row */
+    .auth-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .auth-check-label {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+      color: #555;
+      cursor: pointer;
+    }
+
+    .auth-check-label input[type="checkbox"] {
+      accent-color: #111111;
+      width: 14px;
+      height: 14px;
+    }
+
+    .auth-forgot {
+      font-size: 0.8rem;
+      color: #888;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+
+    .auth-forgot:hover { color: #111; }
+
+    /* Submit button */
+    .auth-btn {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      background: #111111;
+      color: #ffffff;
+      border: none;
+      border-radius: 2px;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .auth-btn:hover {
+      background: #333;
+    }
+
+    .auth-btn:active {
+      transform: scale(0.99);
+    }
+
+    /* Divider */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .auth-divider hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid #E5E5E5;
+    }
+
+    .auth-divider span {
+      font-size: 0.75rem;
+      color: #BBB;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Google button */
+    .auth-google-btn {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: #ffffff;
+      color: #333;
+      border: 1px solid #DDDAD6;
+      border-radius: 2px;
+      font-family: var(--font-body, 'Inter', sans-serif);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .auth-google-btn:hover {
+      background: #F9F9F9;
+      border-color: #BBBBBB;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* Switch link at bottom */
+    .auth-switch {
+      text-align: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #F0EDE9;
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    .auth-switch__link {
+      color: #111111;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .auth-switch__link:hover { color: #C97C5D; }
+
+    /* Password Strength */
+    .pw-strength {
+      margin-top: 0.5rem;
+    }
+
+    .pw-strength__bar {
+      height: 3px;
+      background: #E5E5E5;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 0.3rem;
+    }
+
+    .pw-strength__fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 2px;
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+
+    .pw-strength__label {
+      font-size: 0.72rem;
+      color: #999;
+    }
+
+    /* Terms checkbox */
+    .auth-terms-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #555;
+      cursor: pointer;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .auth-terms-label input[type="checkbox"] {
+      accent-color: #111111;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .auth-terms-label a {
+      color: #111111;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 540px) {
+      .auth-panel { padding: 2rem 1.5rem 1.75rem; }
+      .auth-panel__title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Announcement Bar ────────────────────────── -->
+  <div class="announcement-bar">
+    <span>MIỄN PHÍ VẬN CHUYỂN CHO ĐƠN HÀNG TRÊN 1.250.000₫ &nbsp;|&nbsp; MÃ GIẢM GIÁ: <strong>STYLE20</strong></span>
+    <button class="announcement-bar__close" aria-label="Close announcement">✕</button>
+  </div>
+
+  <!-- ── Site Header ───────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <!-- Left Nav -->
+      <nav class="nav-primary" aria-label="Main navigation">
+        <a href="index.html#new-in">New In</a>
+        <a href="shop.html?cat=women">Women</a>
+        <a href="shop.html?cat=men">Men</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+        <a href="shop.html?sale=1" class="sale-link">Sale</a>
+      </nav>
+
+      <!-- Logo -->
+      <a href="index.html" class="site-logo" aria-label="LUMIÈRE Home">LUMIÈRE</a>
+
+      <!-- Right Actions -->
+      <div class="nav-actions">
+        <button class="nav-icon-btn" data-search-open aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <a href="#" class="nav-icon-btn" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </a>
+        <a href="login.html" class="nav-icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <button class="nav-icon-btn" data-cart-open aria-label="Shopping cart">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" aria-live="polite">0</span>
+        </button>
+        <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Mobile Nav ─────────────────────────────────── -->
+  <div class="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="mobile-nav__overlay"></div>
+    <div class="mobile-nav__panel">
+      <div class="mobile-nav__header">
+        <span class="site-logo" style="font-size:1.3rem">LUMIÈRE</span>
+      </div>
+      <nav class="mobile-nav__links">
+        <a href="index.html#new-in">New In</a>
+        <a href="shop.html?cat=women">Women</a>
+        <a href="shop.html?cat=men">Men</a>
+        <a href="shop.html?cat=accessories">Accessories</a>
+        <a href="shop.html?sale=1" style="color:var(--accent)">Sale</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ── Search Modal ───────────────────────────────── -->
+  <div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-modal__overlay"></div>
+    <div class="search-modal__inner">
+      <button class="search-modal__close" data-search-close>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Close
+      </button>
+      <form class="search-modal__form" action="shop.html" method="get">
+        <input class="search-modal__input" name="q" type="text" placeholder="Search…" autocomplete="off">
+        <button class="search-modal__btn" type="submit" aria-label="Submit search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Cart Drawer ────────────────────────────────── -->
+  <div class="cart-drawer__overlay"></div>
+  <aside class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">My Bag</h2>
+      <button class="cart-drawer__close" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="cart-drawer__body"></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__subtotal">
+        <span>Subtotal</span>
+        <strong class="cart-drawer__subtotal-value">0₫</strong>
+      </div>
+      <p style="font-size:0.75rem;color:var(--gray-500);text-align:center">Shipping &amp; taxes calculated at checkout</p>
+      <a href="cart.html" class="btn btn-primary btn-full">View Cart &amp; Checkout</a>
+      <a href="shop.html" style="text-align:center;font-size:0.8rem;color:var(--gray-500);text-decoration:underline;margin:0 auto;">Continue Shopping</a>
+    </div>
+  </aside>
+
+  <!-- ── Main Login/Register Content ── -->
+  <main class="login-page-bg">
+    <div class="auth-card" role="main">
+
+      <!-- Tabs -->
+      <div class="auth-tabs" role="tablist" aria-label="Login or Register">
+        <button class="auth-tab active" id="tab-login" role="tab" aria-selected="true" aria-controls="panel-login" onclick="switchTab('login')">
+          Đăng Nhập
+        </button>
+        <button class="auth-tab" id="tab-register" role="tab" aria-selected="false" aria-controls="panel-register" onclick="switchTab('register')">
+          Đăng Ký
+        </button>
+      </div>
+
+      <div class="auth-panels">
+
+        <!-- ── LOGIN PANEL ── -->
+        <div class="auth-panel active" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+          <h1 class="auth-panel__title">Chào mừng trở lại</h1>
+          <p class="auth-panel__subtitle">Đăng nhập để tiếp tục trải nghiệm LUMIÈRE</p>
+
+          <form id="loginForm" novalidate onsubmit="handleLogin(event)">
+
+            <div class="auth-field">
+              <label class="auth-label" for="loginEmail">Email</label>
+              <input class="auth-input" type="email" id="loginEmail" name="email" placeholder="email@example.com" autocomplete="email" required>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-label" for="loginPassword">Mật khẩu</label>
+              <div class="auth-input-wrap">
+                <input class="auth-input auth-input--padded" type="password" id="loginPassword" name="password" placeholder="••••••••" autocomplete="current-password" required>
+                <button type="button" class="pw-toggle" onclick="togglePassword('loginPassword', this)" aria-label="Hiện/ẩn mật khẩu">
+                  <!-- Eye icon (show) -->
+                  <svg id="eyeIconLogin" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-row">
+              <label class="auth-check-label">
+                <input type="checkbox" name="remember"> Ghi nhớ đăng nhập
+              </label>
+              <a href="#" class="auth-forgot">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit" class="auth-btn">Đăng Nhập</button>
+
+            <div class="auth-divider">
+              <hr><span>hoặc</span><hr>
+            </div>
+
+            <button type="button" class="auth-google-btn" onclick="handleGoogleAuth()">
+              <!-- Google SVG logo -->
+              <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+                <path fill="#34A853" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+                <path fill="#FBBC05" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+                <path fill="#EA4335" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+              </svg>
+              Tiếp tục với Google
+            </button>
+
+            <div class="auth-switch">
+              Chưa có tài khoản?
+              <span class="auth-switch__link" onclick="switchTab('register')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')switchTab('register')">
+                Đăng ký ngay
+              </span>
+            </div>
+          </form>
+        </div>
+
+        <!-- ── REGISTER PANEL ── -->
+        <div class="auth-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register">
+          <h1 class="auth-panel__title">Tạo tài khoản</h1>
+          <p class="auth-panel__subtitle">Tham gia cộng đồng LUMIÈRE ngay hôm nay</p>
+
+          <form id="registerForm" novalidate onsubmit="handleRegister(event)">
+
+            <div class="auth-field">
+              <label class="auth-label" for="regName">Họ và tên</label>
+              <input class="auth-input" type="text" id="regName" name="fullname" placeholder="Nguyễn Văn A" autocomplete="name" required>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-label" for="regEmail">Email</label>
+              <input class="auth-input" type="email" id="regEmail" name="email" placeholder="email@example.com" autocomplete="email" required>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-label" for="regPassword">Mật khẩu</label>
+              <div class="auth-input-wrap">
+                <input class="auth-input auth-input--padded" type="password" id="regPassword" name="password"
+                  placeholder="Tối thiểu 8 ký tự" autocomplete="new-password" required
+                  oninput="updatePasswordStrength(this.value)">
+                <button type="button" class="pw-toggle" onclick="togglePassword('regPassword', this)" aria-label="Hiện/ẩn mật khẩu">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+              <!-- Password strength indicator -->
+              <div class="pw-strength" aria-live="polite">
+                <div class="pw-strength__bar">
+                  <div class="pw-strength__fill" id="strengthFill"></div>
+                </div>
+                <span class="pw-strength__label" id="strengthLabel"></span>
+              </div>
+            </div>
+
+            <div class="auth-field">
+              <label class="auth-label" for="regConfirm">Xác nhận mật khẩu</label>
+              <div class="auth-input-wrap">
+                <input class="auth-input auth-input--padded" type="password" id="regConfirm" name="confirm_password"
+                  placeholder="Nhập lại mật khẩu" autocomplete="new-password" required>
+                <button type="button" class="pw-toggle" onclick="togglePassword('regConfirm', this)" aria-label="Hiện/ẩn mật khẩu">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <label class="auth-terms-label">
+              <input type="checkbox" id="agreeTerms" name="agree" required>
+              Tôi đồng ý với
+              <a href="#" onclick="return false;">Điều khoản dịch vụ</a>
+              và
+              <a href="#" onclick="return false;">Chính sách bảo mật</a>
+            </label>
+
+            <button type="submit" class="auth-btn">Đăng Ký</button>
+
+            <div class="auth-divider">
+              <hr><span>hoặc</span><hr>
+            </div>
+
+            <button type="button" class="auth-google-btn" onclick="handleGoogleAuth()">
+              <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+                <path fill="#34A853" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+                <path fill="#FBBC05" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+                <path fill="#EA4335" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+              </svg>
+              Tiếp tục với Google
+            </button>
+
+            <div class="auth-switch">
+              Đã có tài khoản?
+              <span class="auth-switch__link" onclick="switchTab('login')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')switchTab('login')">
+                Đăng nhập
+              </span>
+            </div>
+          </form>
+        </div>
+
+      </div><!-- /auth-panels -->
+    </div><!-- /auth-card -->
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* ── Tab Switching ── */
+    function switchTab(tab) {
+      const loginTab     = document.getElementById('tab-login');
+      const registerTab  = document.getElementById('tab-register');
+      const loginPanel   = document.getElementById('panel-login');
+      const registerPanel= document.getElementById('panel-register');
+
+      if (tab === 'login') {
+        loginTab.classList.add('active');
+        loginTab.setAttribute('aria-selected', 'true');
+        registerTab.classList.remove('active');
+        registerTab.setAttribute('aria-selected', 'false');
+        loginPanel.classList.add('active');
+        registerPanel.classList.remove('active');
+      } else {
+        registerTab.classList.add('active');
+        registerTab.setAttribute('aria-selected', 'true');
+        loginTab.classList.remove('active');
+        loginTab.setAttribute('aria-selected', 'false');
+        registerPanel.classList.add('active');
+        loginPanel.classList.remove('active');
+      }
+    }
+
+    /* ── Password Show/Hide Toggle ── */
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const isText = input.type === 'text';
+      input.type = isText ? 'password' : 'text';
+
+      // Toggle eye icon
+      btn.innerHTML = isText
+        ? `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75">
+             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+             <circle cx="12" cy="12" r="3"/>
+           </svg>`
+        : `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75">
+             <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/>
+             <line x1="1" y1="1" x2="23" y2="23"/>
+           </svg>`;
+    }
+
+    /* ── Password Strength ── */
+    function updatePasswordStrength(value) {
+      const fill  = document.getElementById('strengthFill');
+      const label = document.getElementById('strengthLabel');
+      if (!fill || !label) return;
+
+      let strength = 0;
+      if (value.length >= 8)  strength++;
+      if (/[A-Z]/.test(value)) strength++;
+      if (/[0-9]/.test(value)) strength++;
+      if (/[^A-Za-z0-9]/.test(value)) strength++;
+
+      const levels = [
+        { pct: '0%',   color: '#E5E5E5', text: '' },
+        { pct: '25%',  color: '#EF4444', text: 'Yếu' },
+        { pct: '50%',  color: '#F97316', text: 'Trung bình' },
+        { pct: '75%',  color: '#EAB308', text: 'Khá mạnh' },
+        { pct: '100%', color: '#22C55E', text: 'Rất mạnh' },
+      ];
+
+      const lvl = value.length === 0 ? levels[0] : levels[strength] || levels[1];
+      fill.style.width = lvl.pct;
+      fill.style.background = lvl.color;
+      label.textContent = lvl.text;
+      label.style.color = lvl.color;
+    }
+
+    /* ── Login Handler ── */
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const pw    = document.getElementById('loginPassword').value;
+
+      if (!email || !email.includes('@')) {
+        if (typeof showToast === 'function') showToast('Vui lòng nhập email hợp lệ', 'error');
+        return;
+      }
+      if (pw.length < 6) {
+        if (typeof showToast === 'function') showToast('Mật khẩu phải có ít nhất 6 ký tự', 'error');
+        return;
+      }
+      if (typeof showToast === 'function') showToast('Đăng nhập thành công! Chào mừng trở lại ✓', 'success');
+      setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+    }
+
+    /* ── Register Handler ── */
+    function handleRegister(e) {
+      e.preventDefault();
+      const name    = document.getElementById('regName').value.trim();
+      const email   = document.getElementById('regEmail').value.trim();
+      const pw      = document.getElementById('regPassword').value;
+      const confirm = document.getElementById('regConfirm').value;
+      const agree   = document.getElementById('agreeTerms').checked;
+
+      if (!name) {
+        if (typeof showToast === 'function') showToast('Vui lòng nhập họ và tên', 'error');
+        return;
+      }
+      if (!email || !email.includes('@')) {
+        if (typeof showToast === 'function') showToast('Vui lòng nhập email hợp lệ', 'error');
+        return;
+      }
+      if (pw.length < 8) {
+        if (typeof showToast === 'function') showToast('Mật khẩu phải có ít nhất 8 ký tự', 'error');
+        return;
+      }
+      if (pw !== confirm) {
+        if (typeof showToast === 'function') showToast('Mật khẩu xác nhận không khớp', 'error');
+        return;
+      }
+      if (!agree) {
+        if (typeof showToast === 'function') showToast('Vui lòng đồng ý với điều khoản dịch vụ', 'warning');
+        return;
+      }
+      if (typeof showToast === 'function') showToast('Tạo tài khoản thành công! Chào mừng bạn 🎉', 'success');
+      setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+    }
+
+    /* ── Google Auth Handler ── */
+    function handleGoogleAuth() {
+      if (typeof showToast === 'function') showToast('Google Sign-In chưa khả dụng trong bản demo', 'warning');
+    }
+  </script>
+</body>
+</html>
